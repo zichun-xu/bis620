@@ -31,7 +31,7 @@ test_that(
     data(ukb_accel)
     p <- spectral_signature(ukb_accel[1:100, ])
     q <- readRDS(test_path("fixtures", "ukb_accel_100_fft"))
-    expect_identical(q, p)
+    expect_equal(q, p)
   }
 )
 
@@ -41,7 +41,7 @@ test_that(
     data(ukb_accel)
     p <- spectral_signature(ukb_accel[1:100, ], take_log = TRUE)
     q <- readRDS(test_path("fixtures", "ukb_accel_100_fft_log"))
-    expect_identical(q, p)
+    expect_equal(q, p)
   }
 )
 
@@ -51,6 +51,6 @@ test_that(
     data(ukb_accel)
     p <- spectral_signature(ukb_accel[1:100, ], inverse = FALSE)
     q <- readRDS(test_path("fixtures", "ukb_accel_100_fft_noinverse"))
-    expect_identical(q, p)
+    expect_equal(q, p)
   }
 )
