@@ -1,0 +1,55 @@
+---
+output: github_document
+---
+[![Action Status](https://github.com/zichun-xu/bis620/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/zichun-xu/bis620/actions/workflows/R-CMD-check.yaml)
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# bis620.2022
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of bis620.2022 is to produce exploratory analysis tools for the UK Biobank accelerometry data, including:\
+a. time series plot\
+b. spectral signature calculation
+
+## Installation
+
+You can install the development version of bis620.2022 from [GitHub](https://github.com/) with:
+
+``` {r}
+# install.packages("devtools")
+devtools::install_github("zichun-xu/bis620")
+```
+
+## Example
+
+1. Load the UK Biobank accelerometry data
+```{r}
+library(bis620.2022)
+data("ukb_accel")
+```
+
+2. Time series plots of the data:
+```{r}
+accel_plot(ukb_accel)
+```
+
+3. Calculate the spectral signature of the Data
+```{r}
+spectral_signature(ukb_accel)
+```
+
+## Links to Actions
+#### 1. Test Coverage: https://github.com/zichun-xu/bis620/actions/workflows/test-coverage.yaml
+#### 2. lint: https://github.com/zichun-xu/bis620/actions/workflows/lint.yaml
