@@ -1,6 +1,7 @@
 
-[![Action
-Status](https://github.com/zichun-xu/bis620/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/zichun-xu/bis620/actions/workflows/R-CMD-check.yaml)
+[![build](https://github.com/zichun-xu/bis620/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/zichun-xu/bis620/actions/workflows/R-CMD-check.yaml)
+[![lint](https://github.com/zichun-xu/bis620/actions/workflows/lint.yaml/badge.svg)](https://github.com/zichun-xu/bis620/actions/workflows/lint.yaml)
+[![test-coverage](https://github.com/zichun-xu/bis620/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/zichun-xu/bis620/actions/workflows/test-coverage.yaml)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -22,8 +23,19 @@ You can install the development version of bis620.2022 from
 ``` r
 # install.packages("devtools")
 devtools::install_github("zichun-xu/bis620")
-#> Skipping install of 'bis620.2022' from a github remote, the SHA1 (cd5408c6) has not changed since last install.
-#>   Use `force = TRUE` to force installation
+#> Downloading GitHub repo zichun-xu/bis620@HEAD
+#> 
+#>          checking for file 'C:\Users\13288\AppData\Local\Temp\RtmpeCEHts\remotes52ec240c7589\zichun-xu-bis620-b9dd7bb/DESCRIPTION' ...  ✔  checking for file 'C:\Users\13288\AppData\Local\Temp\RtmpeCEHts\remotes52ec240c7589\zichun-xu-bis620-b9dd7bb/DESCRIPTION'
+#>       ─  preparing 'bis620.2022':
+#>    checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
+#>       ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#> ─  looking to see if a 'data/datalist' file should be added
+#>       ─  building 'bis620.2022_0.1.0.tar.gz' (480ms)
+#>      
+#> 
+#> Installing package into 'C:/Users/13288/AppData/Local/R/win-library/4.2'
+#> (as 'lib' is unspecified)
 ```
 
 ## Example
