@@ -12,6 +12,7 @@ Imports:
   dplyr,
   ggplot2,
   purrr,
+  ggtree,
   clusterProfiler,
   org.Hs.eg.db, 
   stats,
