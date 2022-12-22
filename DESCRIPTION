@@ -12,7 +12,7 @@ Imports:
   dplyr,
   ggplot2,
   purrr,
-  ggtree,
+  ggtree (>= 3.6.0),
   clusterProfiler,
   org.Hs.eg.db, 
   stats,
@@ -21,6 +21,7 @@ Imports:
 Roxygen: list(markdown = TRUE)
 Depends: 
   R (>= 4.2)
+biocViews:
 Suggests: 
   testthat (>= 3.0.0),
   vdiffr
