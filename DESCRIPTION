@@ -8,20 +8,23 @@ Description: Captures functions, data, and documentation for BIS620 as taught in
 License: LGPL (>= 2.1)
 Encoding: UTF-8
 RoxygenNote: 7.2.1
+Depends: 
+  R (>= 4.2)
 Imports: 
   dplyr,
+  plyr,
   ggplot2,
   purrr,
-  ggtree (>= 3.6.0),
   clusterProfiler,
   org.Hs.eg.db, 
   stats,
   utils,
-  tidyr
+  tidyr,
+  magrittr,
+  ggtree,
+  yulab.utils (>= 0.0.4)
 Roxygen: list(markdown = TRUE)
-Depends: 
-  R (>= 4.2)
-biocViews:
+biocViews: 
 Suggests: 
   testthat (>= 3.0.0),
   vdiffr
