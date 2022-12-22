@@ -86,9 +86,9 @@ ego = EnrichGO(modules[[1]])
 ```
 
 ```{r}
-enrichplot::dotplot(ego[[2]])
-enrichplot::dotplot(ego[[7]])
-enrichplot::dotplot(ego[[8]])
+# enrichplot::dotplot(ego[[2]])
+# enrichplot::dotplot(ego[[7]])
+# enrichplot::dotplot(ego[[8]])
 ```
 We found eight highly co-expressed gene modules from the top 500 highly expressed genes in excitatory neurons. We took a closer look at the top three modules with the highest number of enriched GO terms. All three modules have a strong connection with neuro-activities (such as synapse, axon, etc.), which is expected for excitatory neurons. This suggests that cell-type-specific co-expression network can characterize the functions of different cell types. 
 
@@ -128,8 +128,8 @@ ego_diff = EnrichGO(modules_diff[[1]])
 ```
 
 ```{r}
-enrichplot::dotplot(ego_diff[[2]])
-enrichplot::dotplot(ego_diff[[3]])
+# enrichplot::dotplot(ego_diff[[2]])
+# enrichplot::dotplot(ego_diff[[3]])
 ```
 We found four highly differentially co-expressed gene modules (a set of genes that have similar co-expression changes in AD) from the top 100 highly expressed genes in microglia. We took a closer look at the top two modules with the highest number of enriched GO terms. One of the module was enriched with synapse-related functions such as synapse organization, while the other was enriched with immune related functions. These two modules characterize two important functions of microglia, pruning and organizing synapse in the brain, and initiate immune response. The differential co-expression analysis suggests that both biological functions are disturbed in AD patients.  
 
