@@ -4,6 +4,7 @@
 #' @param universe background genes to correct for
 #' @return a list of GO enrichment results for each gene cluster
 #' @importFrom  clusterProfiler enrichGO
+#' @importFrom  enrichplot dotplot
 #' @import org.Hs.eg.db
 #' @export
 EnrichGO = function(clusters, universe = NULL){
