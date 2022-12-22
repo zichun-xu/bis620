@@ -21,9 +21,12 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of bis620.2022 is to produce exploratory analysis tools for the UK Biobank accelerometry data, including:\
-a. time series plot\
-b. spectral signature calculation
+The goal of bis620.2022 is to produce a set of tools for the cell-type-specific co-expression analysis of the Alzheimer's disease (AD) single-cell RNA-sequencing data (https://www.pnas.org/doi/abs/10.1073/pnas.2008762117), Main tools include:\
+a. extract the data of cells from a specific cell type and disease conditions (AD or control)\
+b. estimate co-expression network with Pearson or Spearman correlation\
+c. estimate the differential co-expression network (AD vs control) with Pearson or Spearman correlation\
+d. find highly co-expressed gene modules\
+e. conducnt GO enrichment anlaysis
 
 ## Installation
 
@@ -34,23 +37,65 @@ You can install the development version of bis620.2022 from [GitHub](https://git
 devtools::install_github("zichun-xu/bis620")
 ```
 
-## Example
+## Example I: Cell-type-specific Co-expression Network Analysis of Excitatory Neuron
 
-1. Load the UK Biobank accelerometry data
+1. Load the excitatory neuron single-cell RNA-seq data (top 500 highly expressed genes) from the control group 
 ```{r}
 library(bis620.2022)
-data("ukb_accel")
+dat = GetData(1:500, cell_type = "Ex", status = "NC")
+dim(dat)
 ```
 
-2. Time series plots of the data:
+2. Construct the co-expression network estimated with Spearman correlation\
+The co-expression network is constructed by estimating the Pearson or Spearman correlation between genes. Gene pairs with non-significant p-values (calculated with correlation) after multiple testing correction are considered not co-expressed (0 co-expression). 
 ```{r}
-accel_plot(ukb_accel)
+spearman_net = CoExpNet(dat, method = "spearman")
+print(spearman_net[1:5, 1:5])
+print(paste0("density: ", round(mean(spearman_net[upper.tri(spearman_diff_net)] != 0), digits = 3)))
 ```
 
-3. Calculate the spectral signature of the Data
+3. Find highly co-expressed gene modules
+Highly co-expressed gene modules are identified by performing hierarchical clustering on the co-expression network. 
 ```{r}
-spectral_signature(ukb_accel)
+modules = Clustering(spearman_net, num_clusters = 10, min_size = 5)
 ```
+
+4. GO Enrichment Analysis (this can take a while to run)
+```{r}
+ego = EnrichGO(modules[[1]])
+enrichplot::dotplot(ego[[2]])
+```
+
+
+## Example II: Cell-type-specific Differential Co-expression Network Analysis of Microglia
+
+1. Load the microglia single-cell RNA-seq data (top 100 highly expressed genes) from the control and AD group 
+```{r}
+dat_control = GetData(1:100, cell_type = "Mic", status = "NC")
+dat_AD = GetData(1:100, cell_type = "Mic", status = "AD")
+dim(dat_control)
+dim(dat_AD)
+```
+
+2. Construct the differential co-expression network estimated with Spearman correlation
+The differential co-expression network is constructed by taking the difference of the co-expression network estimated separately from two conditions (AD vs control). A permutation test that randomly permute labels are used to threshold gene pairs with insignificant co-expression differences. 
+```{r}
+spearman_diff_net = DifferentialNet(n_counts_1 = dat_AD, n_counts_2 = dat_control, method = "spearman", rep = 100, seed = 20221220)
+print(spearman_diff_net[1:5, 1:5])
+print(paste0("density: ", round(mean(spearman_diff_net[upper.tri(spearman_diff_net)] != 0), digits = 3)))
+```
+
+3. Find highly differentially co-expressed gene modules
+```{r}
+modules_diff = Clustering(spearman_diff_net, num_clusters = 5, min_size = 5)
+```
+
+4. GO Enrichment Analysis 
+```{r}
+ego_diff = EnrichGO(modules_diff[[1]])
+enrichplot::dotplot(ego_diff[[3]])
+```
+
 
 ## Links to Actions
 #### 1. Test Coverage: https://github.com/zichun-xu/bis620/actions/workflows/test-coverage.yaml

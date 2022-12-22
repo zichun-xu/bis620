@@ -12,6 +12,10 @@ Imports:
   dplyr,
   ggplot2,
   purrr,
+  clusterProfiler,
+  org.Hs.eg.db, 
+  stats,
+  utils,
   tidyr
 Roxygen: list(markdown = TRUE)
 Depends: 
