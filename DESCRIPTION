@@ -15,7 +15,7 @@ Imports:
   clusterProfiler,
   org.Hs.eg.db, 
   enrichplot, 
-  ggtree, 
+  ggtree (>= 3.6.2), 
   stats,
   utils,
   tidyr
